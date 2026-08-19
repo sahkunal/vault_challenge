@@ -1,0 +1,15 @@
+################################################################
+# Manage vault_challenge deployment through Crypto Infrastructure as Code
+################################################################
+
+addon "svm" {
+    rpc_api_url = input.rpc_api_url
+    network_id = input.network_id
+}
+
+action "deploy_vault_challenge" "svm::deploy_program" {
+    description = "Deploy vault_challenge program"
+    program = svm::get_program_from_anchor_project("vault_challenge") 
+    authority = signer.authority
+    payer = signer.payer
+}
