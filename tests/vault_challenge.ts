@@ -1,6 +1,6 @@
 import * as anchor from "@anchor-lang/core";
 import { Program } from "@anchor-lang/core";
-import { PreReqVault } from "../target/types/pre_req_vault";
+import { VaultChallenge } from "../target/types/vault_challenge";
 import {
   Commitment,
   LAMPORTS_PER_SOL,
@@ -13,7 +13,7 @@ import { expect } from "chai";
 
 const commitement: Commitment = "confirmed";
 
-describe("pre-req-vault", () => {
+describe("vault-challenge", () => {
   const confirmTx = async (signature: string) => {
     console.log(`Transaction signature: ${signature}`);
     const latestBlockhash = await anchor
@@ -31,7 +31,7 @@ describe("pre-req-vault", () => {
   const provider = anchor.AnchorProvider.env();
   anchor.setProvider(provider);
 
-  const program = anchor.workspace.preReqVault as Program<PreReqVault>;
+  const program = anchor.workspace.vaultChallenge as Program<VaultChallenge>;
   const user = provider.wallet.publicKey;
 
   // Derive PDAs
